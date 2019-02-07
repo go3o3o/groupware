@@ -1,0 +1,68 @@
+@CHARSET "UTF-8";
+
+body, p, div {
+	margin: 0px;
+	padding: 0px;
+}
+
+@font-face{
+	font-family:GESSO___; src:url(fonts/GESSO___.eot); src:url(fonts/GESSO___.eot?#iefix),url(fonts/GESSO___.woff),url(fonts/GESSO___.ttf)
+}
+@font-face{
+	font-family:nanumGothicWeb; src:url(fonts/nanumGothicWeb.eot); src:url(fonts/nanumGothicWeb.eot?#iefix),url(fonts/nanumGothicWeb.woff),
+	url(fonts/nanumGothicWeb.ttf)
+}
+
+div#wrap{width:1050px; margin:0px auto}
+
+
+<!-- hrSystemForm.jsp -->
+div#hr_container {
+	width: 1000px;
+}
+
+#header {
+	text-align: right;
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
+	
+	margin-top: 20px;
+	margin-bottom: 10px;	
+	width: 95%;
+}
+
+#layer {
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#nav {
+	float: left;
+}
+
+button[name=hr_duty] {
+	padding: 3px;
+	width: 30px;
+}
+
+#hr_container {
+	float: left;
+	height: 500px;
+	width: 95%;
+	border: 1px gray solid;
+	border-radius: 10px;
+}
+
+#print, #home {
+	margin-top: 5px;
+	width: 45px;
+}
+
+<!-- manageForm.jsp -->
+
+
+
+
+

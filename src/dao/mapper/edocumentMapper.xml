@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.IEDocumentDao">
+
+<sql id="ED_CONTENT">
+		<choose>
+			<when test="edContent!=null">
+			 #{edContent}
+			</when>
+			<otherwise> '내용없음'
+			</otherwise>
+		</choose>
+</sql>
+
+
+<insert id="insertEDocument" parameterType="Document">
+insert into Document values (ED_SEQ.nextval,
+ 							#{empNo,jdbcType=VARCHAR},
+  							<choose>
+ 								<when test="edStNo!=0">
+		  							#{dtNo,jdbcType=INTEGER},
+ 								</when>
+								<otherwise> 
+									0,
+								</otherwise>
+							</choose>
+						
+  							<choose>
+ 								<when test="edStNo!=0">
+ 									#{ed_St_No,jdbcType=INTEGER},
+ 								</when>
+								<otherwise> 
+									1,
+								</otherwise>
+								</choose>
+					    #{edTitle,jdbcType=VARCHAR},
+					    <include refid="ED_CONTENT"/>,
+					    #{edFile,jdbcType=VARCHAR},
+					    #{edEmer,jdbcType=INTEGER},
+					    #{edDirect,jdbcType=INTEGER},
+					    #{edOpen,jdbcType=INTEGER},
+					    #{perLineCnt,jdbcType=INTEGER},
+					    #{perCurNo,jdbcType=INTEGER},
+					    sysdate,
+					    #{isPer,jdbcType=INTEGER})
+</insert>
+
+
+<update id="updateEDocument" parameterType="java.util.HashMap">
+update Document set DT_NO=#{dtNo}, ED_ST_NO=#{ED_ST_NO}, ED_TITLE=#{ED_TITLE}, ED_CONTENT=<include refid="ED_CONTENT"/>, ED_FILE=#{ED_FILE}, ED_EMER=#{ED_EMER}, PER_SELF=#{PER_SELF}, ED_OPEN=#{ED_OPEN}, PER_LINE_CNT=#{PER_LINE_CNT}, PER_CUR_NO=#{PER_CUR_NO}, IS_PER=sysdate WHERE ED_SEQ=#{ED_SEQ}
+</update>
+
+<delete id="deleteEDocument" parameterType="String">
+delete from Document where ED_SEQ=#{ED_SEQ}
+</delete>
+
+<select id="selectOne" resultType="Document" parameterType="String">
+select 
+	E.ED_NO AS edNo,
+	E.EMP_NO AS empNo,
+	E.DT_NO AS dtNo,
+	E.ED_ST_NO AS edStNo,
+	E.ED_TITLE AS edTitle,
+	E.ED_CONTENT AS edContent,
+	E.ED_FILE AS edFile,
+	E.ED_EMER AS edEmer,
+	E.ED_DIRECT AS edDirect,
+	E.ED_OPEN AS edOpen,
+	E.PER_LINE_CNT AS perLineCnt,
+	E.PER_CUR_NO AS perCurNo,
+	TO_CHAR(E.ED_IN ,'yyyy-MM-dd')AS edIn,
+	E.IS_PER AS isPer
+ from Document E where E.ED_NO=#{ED_NO,jdbcType=VARCHAR}
+</select>
+
+<select id="getCount" resultType="int" parameterType="java.util.HashMap">
+select count(*) from Document where 1=0
+<if test="empNo!=null"> 
+or EMP_NO = ${empNo}  
+</if>
+<if test="edNo!=null"> 
+or ED_NO = ${edNo}  
+</if>
+
+</select>
+
+
+<select id="docList" resultType="Document" parameterType="java.util.HashMap">
+<!-- 기안자 -->
+select 
+	E.ED_NO AS edNo,
+	E.EMP_NO AS empNo,
+	E.DT_NO AS dtNo,
+	E.ED_ST_NO AS edStNo,
+	E.ED_TITLE AS edTitle,
+	E.ED_CONTENT AS edContent,
+	E.ED_FILE AS edFile,
+	E.ED_EMER AS edEmer,
+	E.ED_DIRECT AS edDirect,
+	E.ED_OPEN AS edOpen,
+	E.PER_LINE_CNT AS perLineCnt,
+	E.PER_CUR_NO AS perCurNo,
+	TO_CHAR(E.ED_IN ,'yyyy-MM-dd')AS edIn,
+	E.IS_PER AS isPer
+ from Document E where 1=0
+<if test="empNo!=null"> 
+or EMP_NO = ${empNo}  
+</if>
+<if test="edNo!=null"> 
+or ED_NO = ${edNo}  
+</if>
+<if test="edNo==null">
+<if test="empNo==null">
+or 1=1
+</if>
+</if>
+
+
+
+</select>
+
+
+<!-- //문서번호 시퀀스 가져오기 -->
+<!-- 	public int getDocSeq(); -->
+<select id="getDocSeq" resultType="int">
+select ed_seq.nextval from dual
+</select>
+
+</mapper>
+

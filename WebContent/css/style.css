@@ -1,0 +1,79 @@
+@charset "utf-8";
+
+textarea{
+	resize:none;
+	width:100%;
+	height:380px;
+}
+table{
+	width:100%;
+	border-color:transparent;
+}
+input[type="text"]{
+	width:100%;
+}
+
+
+body,p,div{
+	margin:0px; padding:0px; 
+}
+
+@font-face{
+	font-family:GESSO___; src:url(fonts/GESSO___.eot); src:url(fonts/GESSO___.eot?#iefix),url(fonts/GESSO___.woff),url(fonts/GESSO___.ttf)
+}
+@font-face{
+	font-family:nanumGothicWeb; src:url(fonts/nanumGothicWeb.eot); src:url(fonts/nanumGothicWeb.eot?#iefix),url(fonts/nanumGothicWeb.woff),
+	url(fonts/nanumGothicWeb.ttf)
+}
+
+div#wrap{width:1000px; margin:0px auto}
+
+#header{width:1000px; height:60px; float:left; margin-bottom:10px; background: linear-gradient( to bottom, #0e0026, #977baf )}
+#logo{font-size:30px; width:150px; height:20px; margin:10px auto;}
+ .gnbMenu {position:absolute;right:45px;top:1px; text-size:10px;}
+ .gnbMenu li {float:left;margin-left:8px; list-style:none;}
+ .gnbMenu .last {margin-left:3px;}
+
+#menu {
+  width:1000px; height:60px; float:left; background:#CCCCCC; margin-bottom:10px;
+}
+	div #msSearch{position:absolute; top:25px; right:45px;}
+
+#left{width:250px; height:500px; float:left; margin-right:10px; }
+	#profile{width:250px; height:300px; float:left; margin-top:10px;}
+
+#right{width:740px; height:600px; float:left; }
+	#upper{width:720px; float:left; margin:10px background:#CCCCCC; }
+		#upper .image_area{width:700px; float:left; background:#CCCCCC; }
+
+	#lower{width:720px; height:300px; float:left; margin-left:10px}
+
+#footer{width:1000px; height:100px; float:left; background:#CCCCCC; margin-top:10px}
+
+a:link { color: black; text-decoration: none;}
+a:visited { color: black; text-decoration: none;}
+a:hover { color: #ab3ddb; text-decoration: underline; font-weight:bold}
+
+.container-fluid{
+	border-bottom:2px #0e0026 solid;
+	margin-bottom:20px;
+	background:#efefef;
+}
+
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
+
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+
+
+/* Flip around the padding for proper display in narrow viewports */
+.navbar-wrapper > .container {
+  padding-right: 0;
+  padding-left: 0;
+    width: auto;
+}
+.navbar-wrapper .navbar {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+

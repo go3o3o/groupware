@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="dao.IEmployeeDao">
+
+<resultMap type="Employee" id="Employee">
+	<result column="EMP_NO" property="empNo"/>
+	<result column="EMP_ID" property="empId"/>
+	<result column="EMP_PW" property="empPw"/>
+	<result column="EMP_NM" property="empNm" />
+	<result column="DEPT_NO" property="deptNo"/>
+	<result column="POS_NO" property="posNo"/>
+	<result column="JOB_NO" property="jobNo"/>
+	<result column="EMP_DUTY" property="empDuty"/>
+	<result column="EMP_EMAIL" property="empEmail"/>
+	<result column="COM_PHONE" property="comPhone" />
+	<result column="EMP_PHONE" property="empPhone"/>
+	<result column="EMP_EMR_PHONE" property="empEmrPhone"/>
+	<result column="EMP_ADDR" property="empAddr"/>
+	<result column="EMP_BIRTH" property="empBirth"/>
+	<result column="EMP_JOIN_DT" property="empJoinDt"/>
+	<result column="EMP_JOIN_DOC" property="empJoinDoc"/>
+	<result column="EMP_IP" property="empIp"/>
+	<result column="EMP_STATUS" property="empStatus"/>
+	<result column="EMP_IMG" property="empImg" />
+	
+<!-- 	<association property="department" column="DEPT_NO"> -->
+<!-- 		<id column="DEPT_NO" property="deptNo"/> -->
+<!-- 		<result column="DEPT_NM" property="deptNm"/> -->
+<!-- 	</association> -->
+<!-- 	<association property="position" column="POS_NO"> -->
+<!-- 		<id column="POS_NO" property="posNo" /> -->
+<!-- 		<result column="POS_NM" property="posNm"/> -->
+<!-- 	</association> -->
+<!-- 	<association property="job" column="JOB_NO"> -->
+<!-- 		<id column="JOB_NO" property="jobNo" /> -->
+<!-- 		<result column="JOB_NM" property="jobNm"/> -->
+<!-- 	</association> -->
+
+</resultMap>
+
+<insert id="insertChabun" parameterType="String">
+	INSERT INTO
+					EMPNO_TEMP
+	       VALUES
+	       		 (
+	       			#{commJoinDt}
+	       		 )
+</insert>
+
+<select id="checkChabun" parameterType="String" resultType="int">
+	SELECT
+			NVL(MAX(SUBSTR(EMPNO_CHABUN, 9)), 0)
+	FROM	
+			EMPNO_TEMP
+	WHERE
+			SUBSTR(EMPNO_CHABUN, 0, 8) = #{commJoinDt}
+</select>
+
+<insert id="insertRecord" parameterType="record">
+	INSERT INTO 
+				RECORD
+				(
+						 REC_SEQ
+						,REMP_NO
+						,REMP_ID
+						,REMP_PW
+						,REMP_NM
+						,RJOB_NO
+						,RPOS_NO
+						,RDEPT_NO
+						,REMP_DUTY
+						,REMP_EMAIL
+						,RCOM_PHONE
+						,REMP_PHONE
+						,REMP_EMR_PHONE
+						,REMP_ADDR
+						,REMP_BIRTH
+						,REMP_JOIN_DT
+						,REMP_JOIN_DOC
+						,REMP_STATUS
+						,REMP_REC_DT
+						,REMP_REC_DOC
+						,REMP_REC_EU
+						,REC_DT
+						,RT_NO
+						,REMP_IP
+						,REMP_IN
+						,REMP_UP
+						,REMP_DE
+				)
+				VALUES (
+						 REC_SEQ.NEXTVAL
+						,#{rempNo}
+						,#{rempId}
+						,#{rempPw}
+						,#{rempNm}
+						,#{rjobNo}
+						,#{rposNo}
+						,#{rdeptNo}
+						,#{rempDuty}
+						,#{rempEmail}
+						,#{rcomPhone}
+						,#{rempPhone}
+						,#{rempEmrPhone}
+						,#{rempAddr}
+						,#{rempBirth}
+						,#{rempJoinDt}
+						,#{rempJoinDoc}
+						,#{rempStatus}
+						,#{rempRecDt}
+						,#{rempRecDoc}
+						,#{rempRecEU}
+						,#{recDt}
+						,#{rtNo}
+						,#{rempIp}
+						,#{rempIn}
+						,SYSDATE
+						,#{rempDe}
+				)
+</insert>
+
+<insert id="insertEmployee" parameterType="Employee">
+	INSERT INTO 
+				EMPLOYEE 
+				(
+						 EMP_NO
+						,EMP_ID
+						,EMP_PW
+						,EMP_NM
+						,JOB_NO
+						,POS_NO
+						,DEPT_NO
+						,EMP_EMAIL
+						,EMP_ADDR
+						,EMP_BIRTH
+						,EMP_JOIN_DT
+						,EMP_JOIN_DOC
+						,EMP_STATUS
+						,EMP_IN
+						,EMP_IMG
+				)
+				VALUES (
+						 #{empNo}
+						,#{empId}
+						,#{empPw}
+						,#{empNm}
+						,#{jobNo}
+						,#{posNo}
+						,#{deptNo}
+						,#{empEmail}
+						,#{empAddr}
+						,#{empBirth}
+						,#{empJoinDt}
+						,#{empJoinDoc}
+						,#{empStatus}
+						,SYSDATE
+						,#{empImg}
+				)
+</insert>
+
+<update id="updateEmployee">
+	UPDATE
+			 EMPLOYEE
+	SET
+			 EMP_NM 		= #{empNm}
+			,EMP_ID 		= #{empId}
+			,EMP_PW			= #{empPW}
+			,DEPT_NO	 	= #{deptNo}
+			,POS_NO 		= #{posNo}
+			,JOB_NO 		= #{jobNo}
+			,EMP_DUTY 		= #{empDuty}
+			,EMP_EMAIL 		= #{empEmail}
+			,COM_PHONE 		= #{comPhone}
+			,EMP_PHONE 		= #{empPhone}
+			,EMP_EMR_PHONE	= #{empEmrPhone}
+			,EMP_ADDR 		= #{empAddr}
+			,EMP_BIRTH 		= #{empBirth}
+			,EMP_IMG 		= #{empImg}
+			,EMP_UP 		= SYSDATE
+	WHERE
+			 EMP_NO = #{empNo}
+</update>
+
+
+<insert id="insertAuthority" parameterType="employee">
+	INSERT INTO 
+				MS_AUTHORITY.AUTHORITY
+				(
+						 EMP_NO
+						,AUT_NOTICE
+						,AUT_HR
+						,AUT_DEPT
+						,AUT_IN
+				)			
+				VALUES
+				(
+						 #{empNo}
+						,0
+						,0
+						,0
+						,SYSDATE
+				)
+	
+</insert>
+
+<select id="checkAuthority" parameterType="String" resultType="java.util.HashMap">
+	SELECT
+			 A.AUT_NOTICE 	AS autNotice
+			,A.AUT_HR 		AS autHr
+			,A.AUT_DEPT 	AS autDept
+	FROM
+			 MS_AUTHORITY.AUTHORITY A
+	WHERE
+		 	 A.EMP_NO = #{empNo}
+</select>
+
+
+
+<select id="selectEmpNo" parameterType="String" resultMap="Employee">
+	SELECT 
+			 A.EMP_NO					
+			,A.EMP_ID					 
+			,A.EMP_PW					
+			,A.EMP_NM					
+			,A.DEPT_NO								
+			,A.POS_NO									  
+			,A.JOB_NO					 		  
+			,A.EMP_DUTY					  
+			,A.EMP_EMAIL				
+			,A.COM_PHONE
+			,A.EMP_PHONE				
+			,A.EMP_EMR_PHONE			 
+			,A.EMP_ADDR					
+			,A.EMP_BIRTH				
+			,A.EMP_JOIN_DT				
+			,A.EMP_JOIN_DOC				
+			,A.EMP_IP					
+			,A.EMP_STATUS	
+			,A.EMP_IMG			 
+	FROM 
+			 EMPLOYEE A
+	WHERE 
+			 A.EMP_NO = #{empNo}
+</select>
+
+<select id="selectPos" parameterType="int" resultType="Position">
+	SELECT
+			 POS_NO posNo
+			,POS_NM posNm
+	FROM
+			 POSITION
+	WHERE
+			 POS_NO = #{posNo}
+</select>
+
+<select id="selectJob" parameterType="int" resultType="Job">
+	SELECT
+			 JOB_NO jobNo
+			,JOB_NM jobNm
+	FROM
+			 JOB
+	WHERE
+			 JOB_NO = #{jobNo}
+</select>
+
+<insert id="insertAttendance" parameterType="attendance">
+	INSERT INTO 
+				ATTENDANCE
+				(
+						 ATD_SEQ
+						,EMP_NO
+						,ATD_dATE
+						,ATD_ON_TIME
+						,IP_ADDR
+				)
+				VALUES
+				(
+						 ATD_SEQ.NEXTVAL
+						,#{empNo}
+						,SYSDATE
+						,#{atdOnTime}
+						,#{ipAddr}
+				)
+</insert>
+
+<select id="checkAttendance" parameterType="String" resultType="java.util.HashMap">
+	SELECT
+			A.ATD_SEQ
+	FROM
+			ATTENDANCE A
+	WHERE
+			TO_CHAR(A.ATD_DATE, 'YYYYMMDD')
+			=
+			TO_CHAR(SYSDATE, 'YYYYMMDD')
+		AND
+			ROWNUM = 1
+		AND
+			A.EMP_NO = #{empNo}
+</select>
+
+<update id="updateAttendance" parameterType="Attendance">
+	UPDATE
+			ATTENDANCE	A
+	SET
+			A.ATD_OFF_TIME
+			=
+			#{atdOffTime}
+	WHERE
+			A.ATD_SEQ
+			=
+			(
+				 SELECT 
+				 			A.ATD_SEQ
+				 FROM
+				 			ATTENDANCE A
+				,
+				 ( 
+				 	SELECT
+				 				MAX(D.ATD_ON_TIME)	C
+				 	FROM
+				 				ATTENDANCE 			D
+				 	GROUP BY
+				 				EMP_NO
+				 ) B
+				 WHERE
+				 		A.ATD_ON_TIME
+				 		=
+				 		B.C
+				 	AND
+				 		A.EMP_NO
+				 		=
+				 		#{empNo}
+			)
+</update>
+
+<select id="getAttendance" parameterType="Object" resultType="Attendance">
+	SELECT
+			 A.ATD_SEQ 			atdSeq
+			,A.EMP_NO 			empNo
+			,A.ATD_DATE			atDate
+			,A.ATD_OFF_TIME		atdOffTime
+			,A.ATD_ON_TIME		atdOnTime
+			,A.IP_ADDR			ipAddr
+			,A.ATD_ST			atdSt
+	FROM
+			 ATTENDANCE	A
+			,
+			 ( SELECT 
+			 				MAX(D.ATD_ON_TIME) C
+		 	   FROM
+			 				ATTENDANCE D
+			   GROUP BY
+			   				EMP_NO
+			 ) B
+	WHERE
+			 A.ATD_ON_TIME 		
+			 = 
+			 B.C
+		AND
+			 A.EMP_NO
+			 = 
+			 #{empNo}
+</select>
+
+<select id="selectAttendanceList" parameterType="String" resultType="attendance">
+		SELECT
+				 ATD_SEQ AS atdSeq
+				 ,EMP_NO AS empNo
+				 ,ATD_DATE AS atdDate
+				 ,ATD_OFF_TIME AS atdOffTime
+			 	,ATD_ON_TIME AS atdOnTime
+			 	,IP_ADDR AS ipAddr
+			 	,ATD_ST AS atdSt
+		FROM
+       			ATTENDANCE
+		WHERE
+        		EMP_NO= #{empNo}
+        ORDER BY ATD_DATE DESC
+</select>
+
+<update id="updateEmployeePassword" parameterType="java.util.HashMap">
+	UPDATE 
+			EMPLOYEE
+	SET 
+			EMP_PW=#{changedPassword} 
+    WHERE
+    		EMP_NO=#{empNo}
+</update>
+
+<select id="searchEmployee" parameterType="Employee" resultType="Employee">
+	SELECT 
+			 A.EMP_NO				empNo				
+			,A.EMP_ID				empId	 
+			,A.EMP_PW				empPw	
+			,A.EMP_NM				empNm	
+			,A.DEPT_NO				deptNo					
+			,A.POS_NO				posNo				  
+			,A.JOB_NO				jobNo	 		  
+			,A.EMP_DUTY				empDuty	  
+			,A.EMP_EMAIL			empEmail		
+			,A.COM_PHONE			comPhone
+			,A.EMP_PHONE			empPhone
+			,A.EMP_EMR_PHONE		empEmrPhone
+			,A.EMP_ADDR				empAddr	
+			,A.EMP_BIRTH			empBirth
+			,A.EMP_JOIN_DT			empJoinDt
+			,A.EMP_JOIN_DOC			empJoinDoc
+			,A.EMP_IP				empIp
+			,A.EMP_STATUS			empStatus
+			,A.EMP_IMG				empImg 
+	FROM 
+			EMPLOYEE A
+	WHERE 
+			A.EMP_NM LIKE '%${empNm}%'
+			AND
+			<include refid="searchEmpStatus"></include>
+</select>
+
+<sql id="searchEmpStatus">
+	<choose>
+		<when test = "empStatus != 4">
+			A.EMP_STATUS = #{empStatus}
+		</when>
+		<otherwise>
+			
+		</otherwise>
+	</choose>
+</sql>
+
+<update id="deleteEmployee" parameterType="String">
+	UPDATE
+			EMPLOYEE
+	SET
+			EMP_STATUS = 2,
+			EMP_DE = SYSDATE
+</update>
+
+
+
+</mapper>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.INoticeDao">
+<sql id="ntNo">
+	<choose>
+		<when test="ntNo != null">
+			#{ntNo}
+		</when>
+		<otherwise>
+			0
+		</otherwise>
+	</choose>
+</sql>
+<sql id="notiFile">
+	<choose>
+		<when test="notiFile != null">
+			#{notiFile}
+		</when>
+		<otherwise>
+			'파일없음'
+		</otherwise>
+	</choose>
+</sql>
+<sql id="notiTitle">
+	<choose>
+		<when test="notiTitle !=null">
+			#{notiTitle}
+		</when>
+		<otherwise>
+			'제목없음'
+		</otherwise>
+	</choose>
+</sql>
+<sql id="notiContent">
+	<choose>
+		<when test="notiContent !=null">
+			#{notiContent}
+		</when>
+		<otherwise>
+			'내용없음'
+		</otherwise>
+	</choose>
+</sql>
+	<select id="totalPageCount" resultType="int">
+		select count(NOTI_SEQ) from NOTICE
+	</select>
+	<insert id="insertNotice"  parameterType="notice">
+		insert into
+			NOTICE(
+			NOTI_SEQ,
+			EMP_NO,
+			NT_NO,
+			NOTI_TITLE,
+			NOTI_CONTENT,
+			NOTI_CNT,
+			NOTI_FILE,
+			NOTI_IN,
+			NOTI_UP,
+			NOTI_DE
+			)
+		values(
+			NOTI_SEQ.nextVal,
+			#{empNo},
+			<include refid="ntNo"/>,
+			<include refid="notiTitle"/>,
+			<include refid="notiContent"/>,
+			0,
+			<include refid="notiFile"/>,
+			sysdate,
+			sysdate,
+			null
+		)			
+	</insert>
+	<select id="selectAut" resultType="authority" parameterType="String">
+		select
+			AUT_NOTICE as autNotice,
+			AUT_HR as autHr,
+			AUT_DEPT as autDept
+		from  MS_AUTHORITY.AUTHORITY aut
+		where aut.EMP_NO
+		like
+		(
+			select
+				EMP_NO
+			from
+				EMPLOYEE
+			where 
+				EMP_NO
+			like #{empNo}
+		)
+	</select>
+	<select id="selectAllPage" parameterType="paging" resultType="notice">
+	SELECT NOTI_SEQ as notiSeq,
+			EMP_NO as empNo,
+			Nt_NO as ntNo,
+			NOTI_TITLE as notiTitle,
+			NOTI_CONTENT as notiContent,
+			NOTI_CNT as notiCnt,
+			NOTI_FILE as notiFile,
+			TO_CHAR(NOTI_IN, 'YYYY-MM-DD') as notiIn,
+			NOTI_DE as notiDe,
+			NOTI_UP as notiUp
+	FROM 
+  		(
+		  SELECT A.*, ROW_NUMBER() 
+		  OVER(ORDER BY NOTI_IN desc) AS rnum,
+		  COUNT(*) OVER() AS cnum FROM NOTICE A
+		  ) 
+		WHERE
+			rnum BETWEEN #{offset} AND #{noOfRecords}
+			AND NOTI_DE is null
+	</select>
+	
+	
+	<select id="selectAll" resultType="Notice">
+	select
+		NOTI_SEQ as notiSeq,
+			EMP_NO as empNo,
+			Nt_NO as ntNo,
+			NOTI_TITLE as notiTitle,
+			NOTI_CONTENT as notiContent,
+			NOTI_CNT as notiCnt,
+			NOTI_FILE as notiFile,
+			NOTI_IN as notiIn,
+			NOTI_DE as notiDe,
+			NOTI_UP as notiUp
+		from NOTICE 
+		where NOTI_DE is NULL
+		limit 20
+		order by notiSeq desc
+	</select>
+	
+	<select id="selectOne" resultType="notice" parameterType="int">
+		select
+		NOTI_SEQ as notiSeq,
+		EMP_NO as empNo,
+		NT_NO as ntNo,
+		NOTI_TITLE as notiTitle,
+		NOTI_CONTENT as notiContent,
+		NOTI_CNT as notiCnt,
+		NOTI_FILE as notiFile,
+		NOTI_IN as notiIn,
+		NOTI_DE as notiDe,
+		NOTI_UP as notiUp
+		from NOTICE
+		where NOTI_SEQ = #{notiSeq} 
+		and NOTI_DE is null
+	</select>
+	<update id="deleteOne" parameterType="int">
+		update NOTICE
+		set NOTI_DE = sysdate
+		where NOTI_SEQ = #{notiSeq}
+	</update>
+	<update id="updateOne" parameterType="notice">
+		update NOTICE
+		set NOTI_UP = sysdate,
+			NT_NO = #{ntNo},
+			NOTI_TITLE = #{notiTitle},
+			NOTI_CONTENT = #{notiContent}
+		where NOTI_SEQ = #{notiSeq}
+	</update>
+	<update id="addCnt" parameterType="int">
+		update NOTICE
+		set NOTI_CNT = NOTI_CNT+1
+		where NOTI_SEQ = #{notiSeq}
+	</update>
+</mapper>
