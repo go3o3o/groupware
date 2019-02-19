@@ -6,7 +6,7 @@ WHERE TABLE_NAME = 'COMPANY';
 -- 1. 회사 테이블 생성
 CREATE TABLE COMPANY (
 	COM_NO VARCHAR2(5),				-- 회사번호 PK
-	COM_NM VARCHAR2(12),			-- 회사명
+	COM_NM VARCHAR2(12),				-- 회사명
 	COM_IN DATE,					-- 입력일자
 	COM_UP DATE,					-- 수정일자
 	COM_DE DATE,					-- 삭제일자
@@ -24,21 +24,21 @@ CREATE TABLE BRANCH (
 	COM_NO VARCHAR2(5),				-- 회사번호 FK
 	BR_NO VARCHAR2(5),				-- 지사번호 PK
 	BR_NM VARCHAR2(20),				-- 지사이름
-	BR_COUNTRY VARCHAR2(50),		-- 지사국가
-	BR_LOCATION VARCHAR2(50),		-- 지사지역
-	BR_IN DATE,						-- 입력일자
-	BR_UP DATE,						-- 수정일자
-	BR_DE DATE,						-- 삭제일자
+	BR_COUNTRY VARCHAR2(50),			-- 지사국가
+	BR_LOCATION VARCHAR2(50),			-- 지사지역
+	BR_IN DATE,					-- 입력일자
+	BR_UP DATE,					-- 수정일자
+	BR_DE DATE,					-- 삭제일자
 	CONSTRAINT BR_PK PRIMARY KEY(BR_NO),
 	CONSTRAINT BR_FK_COM FOREIGN KEY(COM_NO) REFERENCES COMPANY(COM_NO)
 );
 
 -- 4. 부서 테이블 생성
 CREATE TABLE DEPARTMENT (
-	DEPT_NO VARCHAR2(9),			-- 부서번호 PK
+	DEPT_NO VARCHAR2(9),				-- 부서번호 PK
 	BR_NO VARCHAR2(5),				-- 지사번호 FK
-	DEPT_NM VARCHAR2(20),			-- 부서명
-	EMP_NO VARCHAR2(14),			-- 팀장 사원번호
+	DEPT_NM VARCHAR2(20),				-- 부서명
+	EMP_NO VARCHAR2(14),				-- 팀장 사원번호
 	DEPT_IN DATE,					-- 입력일자
 	DEPT_UP DATE,					-- 수정일자
 	DEPT_DE DATE,					-- 삭제일자
@@ -59,7 +59,7 @@ CREATE TABLE POSITION (
 -- 5. 직책 테이블 생성
 CREATE TABLE JOB (
 	JOB_NO NUMBER(2),				-- 직책번호 PK
-	JOB_NM VARCHAR2(10),			-- 직책명
+	JOB_NM VARCHAR2(10),				-- 직책명
 	JOB_IN DATE,					-- 입력일자
 	JOB_UP DATE,					-- 수정일자
 	JOB_DE DATE,					-- 삭제일자
@@ -69,24 +69,24 @@ CREATE TABLE JOB (
 
 -- 3. 재직자 테이블 생성
 CREATE TABLE EMPLOYEE (
-	EMP_NO VARCHAR2(14),			-- 사원번호 PK
-	EMP_ID VARCHAR2(20),			-- 계정ID
-	EMP_PW VARCHAR2(64),			-- 비밀번호
-	DEPT_NO VARCHAR2(9),			-- 부서번호 FK
-	EMP_NM VARCHAR2(100),			-- 부서명
+	EMP_NO VARCHAR2(14),				-- 사원번호 PK
+	EMP_ID VARCHAR2(20),				-- 계정ID
+	EMP_PW VARCHAR2(64),				-- 비밀번호
+	DEPT_NO VARCHAR2(9),				-- 부서번호 FK
+	EMP_NM VARCHAR2(100),				-- 부서명
 	POS_NO NUMBER(2),				-- 직위번호 FK
 	JOB_NO NUMBER(2),				-- 직책번호 FK
-	EMP_DUTY VARCHAR2(20),			-- 직무
-	EMP_EMAIL VARCHAR2(320),		-- 이메일
-	COM_PHONE VARCHAR2(18),			-- 사내번호
-	EMP_PHONE VARCHAR2(18),			-- 연락처
-	EMP_EMR_PHONE VARCHAR2(18),		-- 긴급연락처
-	EMP_ADDR VARCHAR2(500),			-- 주소
-	EMP_BIRTH VARCHAR2(10),			-- 생년월일
-	EMP_JOIN_DT VARCHAR2(10),		-- 입사일자
-	EMP_JOIN_DOC VARCHAR2(200),		-- 입사서류
-	EMP_IP VARCHAR2(16),			-- IP 주소
-	EMP_STATUS NUMBER(2),			-- 근무상태
+	EMP_DUTY VARCHAR2(20),				-- 직무
+	EMP_EMAIL VARCHAR2(320),			-- 이메일
+	COM_PHONE VARCHAR2(18),				-- 사내번호
+	EMP_PHONE VARCHAR2(18),				-- 연락처
+	EMP_EMR_PHONE VARCHAR2(18),			-- 긴급연락처
+	EMP_ADDR VARCHAR2(500),				-- 주소
+	EMP_BIRTH VARCHAR2(10),				-- 생년월일
+	EMP_JOIN_DT VARCHAR2(10),			-- 입사일자
+	EMP_JOIN_DOC VARCHAR2(200),			-- 입사서류
+	EMP_IP VARCHAR2(16),				-- IP 주소
+	EMP_STATUS NUMBER(2),				-- 근무상태
 	EMP_IN DATE,					-- 입력일자
 	EMP_UP DATE,					-- 수정일자
 	EMP_DE DATE,					-- 삭제일자
@@ -98,40 +98,40 @@ CREATE TABLE EMPLOYEE (
 
 -- 9. 사원가족 테이블 생성
 CREATE TABLE FAMILY (
-	EMP_NO VARCHAR2(14),			-- 사원번호 FK
-	FAM_TYPE VARCHAR2(8),			-- 가족구분
-	FAM_NM VARCHAR2(100),			-- 성명
-	FAM_BIRTH VARCHAR2(10),			-- 생년월일
-	FAM_REMARKS VARCHAR2(100),		-- 비고
+	EMP_NO VARCHAR2(14),				-- 사원번호 FK
+	FAM_TYPE VARCHAR2(8),				-- 가족구분
+	FAM_NM VARCHAR2(100),				-- 성명
+	FAM_BIRTH VARCHAR2(10),				-- 생년월일
+	FAM_REMARKS VARCHAR2(100),			-- 비고
 	CONSTRAINT FAM_FK_EMP FOREIGN KEY(EMP_NO) REFERENCES EMPLOYEE(EMP_NO)
 );
 
 -- 10. 변경사항 테이블 생성
 CREATE TABLE RECORD (
 	REC_SEQ NUMBER,					-- 변경사항시퀀스 PK
-	REMP_NO VARCHAR2(14),			-- 사원번호
-	REMP_ID VARCHAR2(20),			-- 계정ID
-	REMP_PW VARCHAR2(64),			-- 비밀번호
-	RDEPT_NO VARCHAR2(9),			-- 부서번호
-	REMP_NM VARCHAR2(100),			-- 부서명
+	REMP_NO VARCHAR2(14),				-- 사원번호
+	REMP_ID VARCHAR2(20),				-- 계정ID
+	REMP_PW VARCHAR2(64),				-- 비밀번호
+	RDEPT_NO VARCHAR2(9),				-- 부서번호
+	REMP_NM VARCHAR2(100),				-- 부서명
 	RPOS_NO NUMBER(2),				-- 직위번호
 	RJOB_NO NUMBER(2),				-- 직책번호
-	REMP_DUTY VARCHAR2(20),			-- 직무
-	REMP_EMAIL VARCHAR2(320),		-- 이메일
-	RCOM_PHONE VARCHAR2(18),		-- 사내번호
-	REMP_PHONE VARCHAR2(18),		-- 연락처
-	REMP_EMR_PHONE VARCHAR2(18),	-- 긴급연락처
-	REMP_ADDR VARCHAR2(500),		-- 주소
-	REMP_BIRTH VARCHAR2(10),		-- 생년월일
-	REMP_JOIN_DT VARCHAR2(10),		-- 입사일자
-	REMP_JOIN_DOC VARCHAR2(200),	-- 입사서류
-	REMP_REC_DT VARCHAR2(10),		-- 퇴사일자
-	REMP_REC_DOC VARCHAR2(200),		-- 퇴사서류
-	REMP_REC_EU VARCHAR2(45),		-- 퇴사사유
+	REMP_DUTY VARCHAR2(20),				-- 직무
+	REMP_EMAIL VARCHAR2(320),			-- 이메일
+	RCOM_PHONE VARCHAR2(18),			-- 사내번호
+	REMP_PHONE VARCHAR2(18),			-- 연락처
+	REMP_EMR_PHONE VARCHAR2(18),			-- 긴급연락처
+	REMP_ADDR VARCHAR2(500),			-- 주소
+	REMP_BIRTH VARCHAR2(10),			-- 생년월일
+	REMP_JOIN_DT VARCHAR2(10),			-- 입사일자
+	REMP_JOIN_DOC VARCHAR2(200),			-- 입사서류
+	REMP_REC_DT VARCHAR2(10),			-- 퇴사일자
+	REMP_REC_DOC VARCHAR2(200),			-- 퇴사서류
+	REMP_REC_EU VARCHAR2(45),			-- 퇴사사유
 	REC_DT DATE,					-- 변경일자
 	RT_NO NUMBER(2),				-- 변경사항 분류 FK
-	EMP_IP VARCHAR2(16),			-- IP 주소
-	REMP_STATUS VARCHAR2(20),		-- 근무상태
+	EMP_IP VARCHAR2(16),				-- IP 주소
+	REMP_STATUS VARCHAR2(20),			-- 근무상태
 	REMP_IN DATE,					-- 입력일자
 	REMP_UP DATE,					-- 수정일자
 	REMP_DE DATE,					-- 삭제일자
@@ -147,20 +147,20 @@ CREATE SEQUENCE REC_SEQ
 
 -- 11. 변경사항분류 테이블 생성
 CREATE TABLE RECORD_TYPE (
-	RT_NO NUMBER(2),			-- 변경사항 분류 PK
-	RT_NM VARCHAR2(8),			-- 변경사항 분류명
+	RT_NO NUMBER(2),				-- 변경사항 분류 PK
+	RT_NM VARCHAR2(8),				-- 변경사항 분류명
 	CONSTRAINT RT_PK PRIMARY KEY(RT_NO)
 );
 
 -- 12. 근태관리 테이블 생성
 CREATE TABLE ATTENDANCE (
-	ATD_SEQ NUMBER,				-- 근태관리 시퀀스 PK
-	EMP_NO VARCHAR2(14),		-- 사원번호 FK
-	ATD_DATE DATE,				-- 일자
-	ATD_OFF_TIME DATE,			-- 퇴근시간
-	ATD_ON_TIME DATE,			-- 출근시간
-	IP_ADDR VARCHAR2(16),		-- IP주소
-	ATD_ST VARCHAR2(8),			-- 근태내역
+	ATD_SEQ NUMBER,					-- 근태관리 시퀀스 PK
+	EMP_NO VARCHAR2(14),				-- 사원번호 FK
+	ATD_DATE DATE,					-- 일자
+	ATD_OFF_TIME DATE,				-- 퇴근시간
+	ATD_ON_TIME DATE,				-- 출근시간
+	IP_ADDR VARCHAR2(16),				-- IP주소
+	ATD_ST VARCHAR2(8),				-- 근태내역
 	CONSTRAINT ATD_PK PRIMARY KEY(ATD_SEQ),
 	CONSTRAINT ATD_FK_EMP FOREIGN KEY(EMP_NO) REFERENCES EMPLOYEE(EMP_NO)
 );
