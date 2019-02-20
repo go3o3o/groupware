@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="service.NoticeServiceImpl" project="hrsystem" 
-    file="/hrsystem/src/service/NoticeServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="1" language="java" name="service.NoticeServiceImpl" project="groupware" 
+    file="/groupware/src/service/NoticeServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="134" y="308"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -10,8 +10,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="2" language="java" name="service.EDocumentService" project="hrsystem" 
-    file="/hrsystem/src/service/EDocumentService.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="2" language="java" name="service.EDocumentService" project="groupware" 
+    file="/groupware/src/service/EDocumentService.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="312" y="420"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -19,8 +19,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="3" language="java" name="service.EmployeeService" project="hrsystem" 
-    file="/hrsystem/src/service/EmployeeService.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="3" language="java" name="service.EmployeeService" project="groupware" 
+    file="/groupware/src/service/EmployeeService.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="509" y="420"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -28,8 +28,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="4" language="java" name="service.NoticeService" project="hrsystem" 
-    file="/hrsystem/src/service/NoticeService.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="4" language="java" name="service.NoticeService" project="groupware" 
+    file="/groupware/src/service/NoticeService.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="136" y="420"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -37,8 +37,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="5" language="java" name="service.EDocumentServiceImpl" project="hrsystem" 
-    file="/hrsystem/src/service/EDocumentServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="5" language="java" name="service.EDocumentServiceImpl" project="groupware" 
+    file="/groupware/src/service/EDocumentServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="316" y="308"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -46,8 +46,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="service.EmployeeServiceImpl" project="hrsystem" 
-    file="/hrsystem/src/service/EmployeeServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="6" language="java" name="service.EmployeeServiceImpl" project="groupware" 
+    file="/groupware/src/service/EmployeeServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="507" y="308"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -55,8 +55,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="controller.EDocumentController" project="hrsystem" 
-    file="/hrsystem/src/controller/EDocumentController.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="7" language="java" name="controller.EDocumentController" project="groupware" 
+    file="/groupware/src/controller/EDocumentController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="312" y="56"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -64,8 +64,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="controller.EmployeeController" project="hrsystem" 
-    file="/hrsystem/src/controller/EmployeeController.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="8" language="java" name="controller.EmployeeController" project="groupware" 
+    file="/groupware/src/controller/EmployeeController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="509" y="34"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -73,8 +73,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="controller.NoticeController" project="hrsystem" 
-    file="/hrsystem/src/controller/NoticeController.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="9" language="java" name="controller.NoticeController" project="groupware" 
+    file="/groupware/src/controller/NoticeController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="143" y="163"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -82,8 +82,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="10" language="java" name="dao.IEmployeeDao" project="hrsystem" 
-    file="/hrsystem/src/dao/IEmployeeDao.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="10" language="java" name="dao.IEmployeeDao" project="groupware" 
+    file="/groupware/src/dao/IEmployeeDao.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="760" y="20"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -91,8 +91,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="11" language="java" name="dao.IEDocumentDao" project="hrsystem" 
-    file="/hrsystem/src/dao/IEDocumentDao.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="11" language="java" name="dao.IEDocumentDao" project="groupware" 
+    file="/groupware/src/dao/IEDocumentDao.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1045" y="22"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -100,7 +100,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="12" language="java" name="dao.INoticeDao" project="hrsystem" file="/hrsystem/src/dao/INoticeDao.java" 
+  <interface id="12" language="java" name="dao.INoticeDao" project="groupware" file="/groupware/src/dao/INoticeDao.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1317" y="15"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

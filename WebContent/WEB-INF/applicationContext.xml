@@ -11,7 +11,7 @@
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://127.0.0.1:3306/hrsystem"></property>
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/groupware"></property>
 		<property name="username" value="dmap"></property>
 		<property name="password" value="dmap#wisenut!"></property>
 		<property name="maxActive" value="8"></property>

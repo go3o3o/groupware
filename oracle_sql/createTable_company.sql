@@ -2,8 +2,7 @@
 SELECT * FROM USER_CONS_COLUMNS
 WHERE TABLE_NAME = 'COMPANY';
 
-
--- 1. 회사 테이블 생성
+-- 회사 테이블 생성
 CREATE TABLE COMPANY (
 	COM_NO VARCHAR2(5),				-- 회사번호 PK
 	COM_NM VARCHAR2(12),			-- 회사명
@@ -19,7 +18,7 @@ CREATE SEQUENCE COM_SEQ
 	INCREMENT BY 1
 	MAXVALUE 100000000;
 
--- 2. 지사 테이블 생성
+-- 지사 테이블 생성
 CREATE TABLE BRANCH (
 	COM_NO VARCHAR2(5),				-- 회사번호 FK
 	BR_NO VARCHAR2(5),				-- 지사번호 PK
@@ -33,7 +32,7 @@ CREATE TABLE BRANCH (
 	CONSTRAINT BR_FK_COM FOREIGN KEY(COM_NO) REFERENCES COMPANY(COM_NO)
 );
 
--- 4. 부서 테이블 생성
+-- 부서 테이블 생성
 CREATE TABLE DEPARTMENT (
 	DEPT_NO VARCHAR2(9),			-- 부서번호 PK
 	BR_NO VARCHAR2(5),				-- 지사번호 FK
@@ -46,7 +45,7 @@ CREATE TABLE DEPARTMENT (
 	CONSTRAINT DEPT_FK_BR FOREIGN KEY(BR_NO) REFERENCES BRANCH(BR_NO)
 );
 
--- 6. 직위 테이블 생성
+-- 직위 테이블 생성
 CREATE TABLE POSITION (
 	POS_NO NUMBER(2),				-- 직위번호 PK
 	POS_NM VARCHAR2(8),				-- 직위명
@@ -56,7 +55,7 @@ CREATE TABLE POSITION (
 	CONSTRAINT POS_PK PRIMARY KEY(POS_NO)
 );
 
--- 5. 직책 테이블 생성
+-- 직책 테이블 생성
 CREATE TABLE JOB (
 	JOB_NO NUMBER(2),				-- 직책번호 PK
 	JOB_NM VARCHAR2(10),			-- 직책명
@@ -67,7 +66,7 @@ CREATE TABLE JOB (
 );
 
 
--- 3. 재직자 테이블 생성
+-- 재직자 테이블 생성
 CREATE TABLE EMPLOYEE (
 	EMP_NO VARCHAR2(14),			-- 사원번호 PK
 	EMP_ID VARCHAR2(20),			-- 계정ID
@@ -96,7 +95,7 @@ CREATE TABLE EMPLOYEE (
 	CONSTRAINT EMP_FK_JOB FOREIGN KEY(JOB_NO) REFERENCES JOB(JOB_NO)
 );
 
--- 9. 사원가족 테이블 생성
+-- 사원가족 테이블 생성
 CREATE TABLE FAMILY (
 	EMP_NO VARCHAR2(14),			-- 사원번호 FK
 	FAM_TYPE VARCHAR2(8),			-- 가족구분
@@ -106,7 +105,7 @@ CREATE TABLE FAMILY (
 	CONSTRAINT FAM_FK_EMP FOREIGN KEY(EMP_NO) REFERENCES EMPLOYEE(EMP_NO)
 );
 
--- 10. 변경사항 테이블 생성
+-- 변경사항 테이블 생성
 CREATE TABLE RECORD (
 	REC_SEQ NUMBER,					-- 변경사항시퀀스 PK
 	REMP_NO VARCHAR2(14),			-- 사원번호
@@ -145,14 +144,14 @@ CREATE SEQUENCE REC_SEQ
 	INCREMENT BY 1
 	MAXVALUE 100000000;
 
--- 11. 변경사항분류 테이블 생성
+-- 변경사항분류 테이블 생성
 CREATE TABLE RECORD_TYPE (
 	RT_NO NUMBER(2),			-- 변경사항 분류 PK
 	RT_NM VARCHAR2(8),			-- 변경사항 분류명
 	CONSTRAINT RT_PK PRIMARY KEY(RT_NO)
 );
 
--- 12. 근태관리 테이블 생성
+-- 근태관리 테이블 생성
 CREATE TABLE ATTENDANCE (
 	ATD_SEQ NUMBER,				-- 근태관리 시퀀스 PK
 	EMP_NO VARCHAR2(14),		-- 사원번호 FK

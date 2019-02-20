@@ -371,7 +371,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		try {
 			employee = employeeDao.selectEmpNo(empNo);
 			fileName = employee.getEmpImg();
-			path = "/Users/yoni/Documents/workspace/hrsystem/EmployeeImg/";
+			path = "/Users/yoni/Documents/workspace/groupware/EmployeeImg/";
 
 			file = new File(path + fileName);
 
@@ -389,7 +389,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		File attachFile = null;
 
 		try {
-			path = "/Users/yoni/Documents/workspace/hrsystem/EmployeeImg/";
+			path = "/Users/yoni/Documents/workspace/groupware/EmployeeImg/";
 			dir = new File(path);
 
 			if (!dir.exists()) {
